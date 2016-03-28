@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html ng-app="indexModule" ng-controller="indexController">
+<head>
+    <title>GenesisApp</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<div class="container">
+    <div class="well well-sm" ng-show="hasLoggedIn">
+
+
+        <nav class="nav nav-pills">
+            <ul id="menu">
+                <li>
+                    <a  ng-model="hasLoggedIn" href="#/">Home </a>
+                </li>
+                <li class="pull-right">
+                    <a  ng-model="hasLoggedIn" ng-click="logOut()" href="" id="logOut">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <h3 align="center" class="page-header"><strong>Genesis Asset Management System </strong>
+    </h3>
+    <div ng-view onload="isUserAuthenticated()">
+    </div>
+</div>
+    <script src="/Scripts/angular.js"></script>
+    <script src="/Scripts/angular-route.js"></script>
+    <script src="/Scripts/angular-resource.js"></script>
+    <script src="/Scripts/angular-cookies.js"></script>
+    <script src="/Scripts/angular-ui/ui-bootstrap.js"></script>
+    <script src="/Scripts/common/CurrentUser.js"></script>
+    <script src="/Scripts/indexApp.js"></script>
+    <script src="/Scripts/assetApp.js"></script>
+    <script src="/Scripts/userApp.js"></script>
+    <link href="/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/ui-bootstrap-csp.css" rel="stylesheet" type="text/css">
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+</body>
+</html>
+
+<!--
+              <li>
+
+                  <a href="http://www.nepalnow.org/wp-content/uploads/2015/12/Nepal-Himalayas-Everest.jpg">UnderConstruction</a>
+              </li> -->
+<!--http://codepen.io/sevilayha/pen/HnxkJ-->

@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<script src="/Scripts/myApp.js"></script>
+<script src="/Scripts/angular.min.js"></script>
+<html ng-app="myApp">
+<head>
+    <title></title>
+</head>
+<body>
+
+<div ng-module="assetModule" ng-controller="assetController">
+    <form>
+        <div class="form-group">
+            <label for="name">Name </label>
+            <input type="text" class="form-control" id="name" ng-model="name" placeholder="Name" />
+
+            <label for="publisher">Publisher</label>
+            <input type="text" class="form-control" id="publisher" ng-model="publisher" placeholder="Publisher" />
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>

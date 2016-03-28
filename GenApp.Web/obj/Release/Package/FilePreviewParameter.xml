@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="genesisapp" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\PawanGurung\\documents\\visual\ studio\ 2015\\Projects\\GenApp\\GenApp\.Web\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\PawanGurung\\documents\\visual\ studio\ 2015\\Projects\\GenApp\\GenApp\.Web\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="GenAppContext-Web.config Connection String" description="" value="Data Source=tcp:gendb.database.windows.net,1433;Initial Catalog=genesisapp_db;User Id=GenAppDbServer@gendb;Password=G24jb123!" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\PawanGurung\\documents\\visual\ studio\ 2015\\Projects\\GenApp\\GenApp\.Web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='GenAppContext']/@connectionString" />
+  </parameter>
+</parameters>

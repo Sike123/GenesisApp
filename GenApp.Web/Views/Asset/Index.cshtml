@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<script src="/Scripts/angular.js"></script>
+<script src="/Scripts/myApp.js"></script>
+<head>  
+    <title>Gen App Asset Section </title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div ng-app="assetModule" ng-controller="assetController" class="container">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>AssetList</h4>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped table-bordered table-condensed table-hover">
+                    <thead>
+                        <tr class="info">
+                            <th class="info">
+                                Publisher
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                ISBN
+                            </th>
+                            <th>
+                                Edition
+                            </th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+                        <tr ng-repeat="x in books">
+                            <td>
+                                {{x.Publisher}}
+                            </td>
+                            <td>
+                                {{x.Name}}
+                            </td>
+                            <td>
+                                {{x.Isbn}}
+                            </td>
+                            <td>
+                                {{x.Edition}}
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+                </table>
+                <button id="testButton" type="button" class="btn btn-primary pull-right">Enter</button>
+            </div>
+            <div class="panel-footer">
+                Footer
+            </div>
+        </div>
+    </div>
+</body>
+
+

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="GenAppContext-Web.config Connection String" description="GenAppContext Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:gendb.database.windows.net,1433;Database=gendb;User ID=GenAppDbServer@gendb;Password=G24jb123!;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\PawanGurung\\documents\\visual\ studio\ 2015\\Projects\\GenApp\\GenApp\.Web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='GenAppContext']/@connectionString" />
+  </parameter>
+</parameters>

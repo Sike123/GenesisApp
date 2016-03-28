@@ -1,0 +1,74 @@
+﻿
+
+<div ng-app="assetModule" class="panel panel-primary">
+
+    <div class="panel-heading">
+        <strong>List Of Assets</strong> 
+    </div>
+    <div ng-init="GetAllBooks()" class="panel-body">
+        <table class="table table-striped table-bordered table-condensed table-hover" >
+            <thead>
+                <tr>
+
+                    <th>
+                        Publisher
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        ISBN
+                    </th>
+                    <th>
+                        Edition
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="x in books">
+                    <td>
+                        {{x.Publisher}}
+                    </td>
+                    <td>
+                        {{x.Name}}
+                    </td>
+                    <td>
+                        {{x.Isbn}}
+                    </td>
+                    <td>
+                        {{x.Edition}}
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" ng-href="/#/Update/{{x.Id}}">
+                          <span class="glyphicon glyphicon-edit"></span>  Update
+                        </a>
+                        <a class="btn btn-warning" ng-href="/#/Create/{{x.Id}}">
+                            <span class="glyphicon glyphicon-zoom-in"> </span>  View 
+                        </a>
+                        <a class="btn btn-danger" ng-click="deleteAsset(x.Id)">
+                            <span class="glyphicon glyphicon-trash"></span>   Delete   
+
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a class="btn btn-success pull-right" ng-href="/#/Create/">
+            <span class="glyphicon glyphicon-pencil"></span>
+            Register
+        </a>
+    </div>
+    <div class="panel-footer">
+       GenApp 
+    </div>
+
+</div>
+
+
+
+

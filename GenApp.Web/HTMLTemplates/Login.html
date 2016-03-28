@@ -1,0 +1,49 @@
+﻿
+
+
+
+<div class="panel panel-primary" ng-controller="userController as model" ng-app="userModule"
+      ng-Init="checkIfTheUserIsLoggedIn()" style="margin: 0 auto; width: 350px">
+        <div class="panel-heading">
+            Login Form
+        </div>
+        <div class="panel-body">
+
+            <form ng-submit="login()">
+                <div ng-if="errorMessage" class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    {{errorMessage}}
+                </div>
+      
+                
+                <fieldset class="form-group">
+                    <label class="control-label" for="userNameButton">UserName</label>
+                    <input type="text" class="form-control" ng-model="model.user.username" id="userNameButton" required/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label class="control-label" for="passWordButton">Password</label>
+                    <input type="password" class="form-control" ng-model="model.user.password" id="passWordButton" required/>
+
+                </fieldset>
+                <fieldset class="form-group">
+                    <button type="submit" id="submitButton" class="btn btn-success">
+                        <span class="glyphicon glyphicon-open"></span> Login
+                    </button>
+                    <a href="/#/RegisterUser" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        Register
+                    </a>
+                </fieldset>
+                   
+              
+            </form>
+        </div>
+        <div class="panel-footer">
+            Gen App
+
+        </div>
+    </div>
+
+  
+

@@ -1,0 +1,76 @@
+﻿
+
+
+    <div ng-app="assetModule" ng-init="checkIfItsViewPage()">
+        <div class="panel panel-primary">
+            
+            <div class="panel-heading">
+                <label ng-if="isViewPage"> Displayed Below Are the List of Details for a given Asset </label>
+              
+                <label ng-if="!isViewPage">Please Register Asset Details Here </label>
+            </div>
+
+            <div class="panel-body">
+                <form ng-submit="submit()">
+                    <div class="form-group">
+                        <label for="name"><strong>Name </strong></label>
+
+
+                        <div ng-if="!isViewPage">
+                            <input type="text" class="form-control" id="name" ng-model="$parent.asset.name" placeholder="Name" required/>
+                        </div>
+
+                        <div ng-if="isViewPage">
+                            {{name}}
+                        </div>
+
+
+                    </div>
+                    <div class="form-group">
+                        <label for="isbn"><strong>Isbn</strong></label>
+                        <div ng-if="isViewPage">
+
+                            {{isbn}}
+                        </div>
+                        <div ng-if="!isViewPage">
+                            <input type="text" class="form-control" id="isbn" ng-model="$parent.asset.isbn" placeholder="Isbn" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="publisher"><strong>Publisher</strong></label>
+
+                        <div ng-if="isViewPage">
+                            {{publisher}}
+                        </div>
+                        <div ng-if="!isViewPage">
+
+                            <input type="text" class="form-control" id="publisher" ng-model="$parent.asset.publisher" placeholder="Publisher" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edition">Edition</label>
+                        <div ng-if="isViewPage">
+                            {{edition}}
+                        </div>
+                        <div ng-if="!isViewPage">
+                            <input type="text" class="form-control" id="edition" ng-model="$parent.asset.edition" placeholder="Edition" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button ng-if="!isViewPage" type="submit" class="btn btn-primary" id="enterButton" ng-model="enter" placeholder="Enter">
+                            <span class="glyphicon glyphicon-floppy-disk"></span>
+                            Save
+                        </button>
+                        <a class="btn btn-success" href="/#/BooksList">
+                            <span class="glyphicon glyphicon-home"></span>
+                            Back
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer">
+                GenApp
+            </div>
+
+        </div>
+    </div>
