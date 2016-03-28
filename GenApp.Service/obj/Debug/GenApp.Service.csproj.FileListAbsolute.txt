@@ -1,4 +1,0 @@
-C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Service\bin\Debug\GenApp.Service.dll
-C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Service\bin\Debug\GenApp.Service.pdb
-C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Service\obj\Debug\GenApp.Service.dll
-C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Service\obj\Debug\GenApp.Service.pdb
