@@ -1,0 +1,17 @@
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\bin\Release\GenApp.Repository.dll.config
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\bin\Release\GenApp.Repository.dll
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\bin\Release\GenApp.Repository.pdb
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\bin\Release\EntityFramework.dll
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\bin\Release\GenApp.Service.dll
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\bin\Release\GenApp.Service.pdb
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\bin\Release\EntityFramework.xml
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\obj\Release\GenApp.Repository.csprojResolveAssemblyReference.cache
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\obj\Release\GenApp.Repository.Migrations.IntialiseDatabase.resources
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\obj\Release\GenApp.Repository.Migrations.AddedFewMorecolumnsforBook.resources
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\obj\Release\GenApp.Repository.Migrations.AddedFewmoreRowsforSeedData.resources
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\obj\Release\GenApp.Repository.csproj.GenerateResource.Cache
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\obj\Release\GenApp.Repository.dll
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\obj\Release\GenApp.Repository.pdb
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Repository\obj\Release\GenApp.Repository.Migrations.ReinitialiseTheDatabaseAfterUsingIdentityDefaultBuiltInDatabase.resources
