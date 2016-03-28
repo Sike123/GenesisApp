@@ -1,0 +1,5 @@
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Service\bin\Release\GenApp.Service.dll
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Service\bin\Release\GenApp.Service.pdb
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Service\obj\Release\GenApp.Service.csprojResolveAssemblyReference.cache
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Service\obj\Release\GenApp.Service.dll
+C:\Users\PawanGurung\documents\visual studio 2015\Projects\GenApp\GenApp.Service\obj\Release\GenApp.Service.pdb
