@@ -19,9 +19,6 @@ namespace GenApp.Repository
             return assets;
         }
 
-
-
-
         public bool Delete(Guid id)
         {
             var asset = _context.Assets.SingleOrDefault(x => x.Id == id);
@@ -37,9 +34,10 @@ namespace GenApp.Repository
 
         public bool Update(Asset asset)
         {
+            Asset _asset;
             if (asset is Book)
             {
-                var _asset = _context.Assets.SingleOrDefault(x => x.Id == asset.Id);
+                _asset = _context.Assets.SingleOrDefault(x => x.Id == asset.Id);
                 if (_asset == null) throw new ArgumentNullException(nameof(_asset));
                  _asset.Name = asset.Name;
                 ((Book) _asset).Edition = ((Book) asset).Edition;

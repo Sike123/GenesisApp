@@ -53,7 +53,7 @@ namespace GenApp.Web.Controllers
                 _assetAssetRepository.Save(Mapper.Map<Book>(model));
                 return Ok();
             }
-            return Ok();
+            return BadRequest(ModelState);
         }
 
         // PUT: api/Asset/5
@@ -70,11 +70,10 @@ namespace GenApp.Web.Controllers
         {
             try
             {
-                return _assetAssetRepository.Delete(id);
-                
-
+                bool deleted= _assetAssetRepository.Delete(id);
+                return deleted;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
                 // ignored

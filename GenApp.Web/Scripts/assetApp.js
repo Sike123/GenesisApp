@@ -102,11 +102,8 @@ assetApp.controller("assetController", [
         $('#deleteModal').on('show.bs.modal', function (e) {
             //need more reading on this 
            // http://stackoverflow.com/questions/5309926/how-to-get-the-data-id-attribute
-            var assetToDelete = $(this).data("id");
-
-    
-        
-          $scope.assetIdToDelete = $(e.relatedTarget).data(assetToDelete).id;
+            var assetToDelete = $(this).data("id");        
+            $scope.assetIdToDelete = $(e.relatedTarget).data(assetToDelete).id;
            
         });
 
@@ -116,8 +113,6 @@ assetApp.controller("assetController", [
         var promise = assetService.deleteAsset($scope.assetIdToDelete);
 
         promise.then(function(response) {
-            //  alert("Product Deleted Successfully");
-        
             window.location.reload();
         }).catch(function(error) {
             alert("Could not delete Product "+error);
@@ -135,7 +130,8 @@ assetApp.controller("assetController", [
 }
 ]);
 
-assetApp.controller("createAssetController", ['$scope', '$http', '$window', '$routeParams', 'assetService', function ($scope, $http, $window, $routeParams, assetService) {
+assetApp.controller("createAssetController", ['$scope', '$http', '$window', '$routeParams', 'assetService', 'currentUser',
+function ($scope, $http, $window, $routeParams, assetService,currentUser) {
   
     var assetId = $routeParams.assetId;
     $scope.isViewPage = false;
@@ -177,21 +173,21 @@ assetApp.controller("createAssetController", ['$scope', '$http', '$window', '$ro
         promise.then(function (response) {
             console.log("log from product registration");
             console.log(response);
-           
-            alert("Product SuccessFully Added. " );
+
+            currentUser.setAndDisplayModal("Update Successful", "Product has been updated Successfully");
             $window.location.href = "/#/BooksList";
         }, function(error) {
             alert(error.data.Message);
         });
 
 
+     
 
-      
 
     }
 }]);
 
-assetApp.controller("updateAssetController", ['$scope', '$http', '$window', '$routeParams', 'assetService', function ($scope, $http, $window, $routeParams, assetService) {
+assetApp.controller("updateAssetController", ['$scope', '$http', '$window', '$routeParams', 'assetService','currentUser',function ($scope, $http, $window, $routeParams, assetService,currentUser) {
  
     var assetId = $routeParams.assetId;
 
@@ -215,8 +211,8 @@ assetApp.controller("updateAssetController", ['$scope', '$http', '$window', '$ro
         }
 
         var promise = assetService.updateAsset(book);
-        promise.then(function(response) {
-            alert("Product Updated Successfully ");
+        promise.then(function (response) {
+            currentUser.setAndDisplayModal("Update Successful", "Product has been updated Successfully");
             $window.location.href = "/#/BookList";
         }).catch(function(error) {
             console.log(error);

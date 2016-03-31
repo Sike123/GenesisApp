@@ -52,13 +52,26 @@
 
             return profile;
         }
+        
+        var setAndDisplayModal = function (messageHeader,messageBody) {
+ 
+            $('#templateModal').on('show.bs.modal', function () {
+                var modal = $(this);
+                modal.find('.modal-body').text(messageBody);
+                modal.find('.modal-header').text(messageHeader);
+            });
+
+            $('#templateModal').modal('show');
+        }
 
         return {
             setProfile: setProfile,
             getProfile: getProfile,
-            removeProfile:removeProfile
+            removeProfile: removeProfile,
+            setAndDisplayModal:setAndDisplayModal
         }
     }
 
+    
 
 })();
