@@ -66,8 +66,8 @@ userModule.service("userService", [
 
 
 //http://haroldrv.com/2015/02/understanding-angularjs-q-service-and-promises/
-userModule.controller("userController", ['$scope', '$http', '$window', '$routeParams', 'userService',
-    function ($scope, $http, $window, $routeParams, userService) {
+userModule.controller("userController", ['$scope', '$http', '$window', '$routeParams', 'userService','currentUser',
+    function ($scope, $http, $window, $routeParams, userService,currentUser) {
         var routeUrl = '';
         $scope.ErrorMessage = "ErrorList: ";
         var messageHeader = "";
@@ -83,8 +83,11 @@ userModule.controller("userController", ['$scope', '$http', '$window', '$routePa
         }
 
         $scope.logOut = function () {
-            userService.logOut();
-            $window.location.href = "/#/";
+            console.log("logout triggered");
+            currentUser.setAndDisplayConfirmationModal("Confirm Sign Out", "Are you sure you want to sign out.","LogOut");
+
+        //    userService.logOut();
+          //  $window.location.href = "/#/";
         }
 
         $scope.register = function () {

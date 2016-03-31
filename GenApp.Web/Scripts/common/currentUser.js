@@ -53,7 +53,7 @@
             return profile;
         }
         
-        var setAndDisplayModal = function (messageHeader,messageBody) {
+        var setAndDisplayMessageModal = function (messageHeader,messageBody) {
  
             $('#templateModal').on('show.bs.modal', function () {
                 var modal = $(this);
@@ -64,11 +64,30 @@
             $('#templateModal').modal('show');
         }
 
+        var setAndDisplayConfirmationModal=function(messageHeader, messageBody,commandText) {
+
+            $('#confirmationModal').on('show.bs.modal', function() {
+                var modal = $(this);
+                modal.find('.modal-body').text(messageBody);
+                modal.find('.modal-header').text(messageHeader);
+                modal.find('#confirmationButton').text(commandText);
+
+            
+
+
+            });
+
+            $('#confirmationModal').modal('show');
+
+
+        }
+
         return {
             setProfile: setProfile,
             getProfile: getProfile,
             removeProfile: removeProfile,
-            setAndDisplayModal:setAndDisplayModal
+            setAndDisplayMessageModal: setAndDisplayMessageModal,
+            setAndDisplayConfirmationModal:setAndDisplayConfirmationModal
         }
     }
 
