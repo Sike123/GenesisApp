@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Results;
 using AutoMapper;
 using GenApp.Repository;
 using GenApp.Web.Models;
+using Microsoft.AspNet.Identity;
 
 namespace GenApp.Web.Controllers
 {
@@ -66,9 +66,20 @@ namespace GenApp.Web.Controllers
 
         // DELETE: api/Asset/5
         [Authorize]
-        public void Delete(Guid id)
+        public  bool Delete(Guid id)
         {
-            _assetAssetRepository.Delete(id);
+            try
+            {
+                return _assetAssetRepository.Delete(id);
+                
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+                // ignored
+
+            }
         }
     }
 }

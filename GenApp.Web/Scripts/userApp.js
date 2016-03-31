@@ -2,16 +2,6 @@
 
 userModule.service("userService", [
     '$http', '$q', '$cookies', 'currentUser', function ($http, $q, $cookies, currentUser) {
-
-
-        var setUserProfile=function(response) {
-            
-        }
-
-        var getRolesForUser=function(userId) {
-            
-        }
-
         var login = function (userName,passWord) {
        
             var deferred = $q.defer();
@@ -79,8 +69,10 @@ userModule.service("userService", [
 userModule.controller("userController", ['$scope', '$http', '$window', '$routeParams', 'userService',
     function ($scope, $http, $window, $routeParams, userService) {
         var routeUrl = '';
-        $scope.ErrorMessage = "ErrorList: ";        
- 
+        $scope.ErrorMessage = "ErrorList: ";
+        var messageHeader = "";
+        var messageBody = "";
+      
         $scope.checkIfTheUserIsLoggedIn = function () {
             this.model.user = userService.getUserProfile();
             routeUrl = '/api/Account/RegisterUser';
@@ -125,16 +117,34 @@ userModule.controller("userController", ['$scope', '$http', '$window', '$routePa
             var result = userService.login(this.model.user.username,this.model.user.password);
             result.then(function (response) {
                 if (response.access_token) {
-                    
-                    alert("Welcome:" + response.userName);
-                    $window.location.href = "/#/BooksList";
+            
+
+                    messageHeader = "Authentication Successful";
+                    messageBody = "Welcome: " + response.userName;
+                 
+                    $('#templateModal').modal('show');
+                 
 
                 } else {
                     alert("You Are Not Logged in ");
                 }
 
             }).catch(function (response) {
-                $scope.errorMessage = response.data.error_description;
+                $scope.errorMessage = response.data.statusText;
+            });
+
+
+            $('#templateModal').on('show.bs.modal', function (e) {
+                var modal = $(this);
+                modal.find('.modal-body').text(messageBody);
+                modal.find('.modal-header').text(messageHeader);
+            });
+
+            //take the user to the booklist when the modal has finished disrendering
+            $('#templateModal').on('hidden.bs.modal', function(e) {
+                $window.location.href = "/#/BooksList";
             });
         }
+
+       
     }]);

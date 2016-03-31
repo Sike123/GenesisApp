@@ -14,15 +14,18 @@
             isLoggedIn: false,
             username: "",
             password:"",
-            token: ""
+            token: "",
+            role:""
         }
 
-        var setProfile = function (username, token) {
+        var setProfile = function (username, token,userRole) {
             profile.userName = username;
             $cookies.put('userName', username);
             profile.token = token;
             $cookies.put('accessToken', token);
 
+            profile.role = ('userRole', userRole);
+            $cookies.put('userRole', userRole);
             profile.isLoggedIn = true;
             $cookies.put('isLoggedIn', true);
 
@@ -36,6 +39,7 @@
             $cookies.put('accessToken', null);
             profile.isLoggedIn = false;
             $cookies.put('isLoggedIn', false);
+            
         }
 
 

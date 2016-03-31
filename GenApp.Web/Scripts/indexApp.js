@@ -64,6 +64,7 @@
             }
         ])
         .controller('indexController', ["$scope", '$window', '$routeParams', 'indexService', function ($scope, $window, $routeParams, indexService) {
+         
 
             $scope.hasLoggedIn = false;
 

@@ -6,8 +6,6 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
-using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -18,7 +16,6 @@ using GenApp.Web.Models;
 using GenApp.Web.Providers;
 using GenApp.Web.Results;
 using System.Linq;
-using System.Web.Http.Description;
 
 namespace GenApp.Web.Controllers
 {

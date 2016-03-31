@@ -12,7 +12,7 @@ namespace GenApp.Repository
         IEnumerable<Asset> GetAll();
         void Save(Asset asset);
         bool Update(Asset asset);
-        void Delete(Guid id);
+        bool Delete(Guid id);
         Asset View(Guid assetId);
     }
 }

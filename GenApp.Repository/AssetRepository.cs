@@ -22,11 +22,11 @@ namespace GenApp.Repository
 
 
 
-        public void Delete(Guid id)
+        public bool Delete(Guid id)
         {
             var asset = _context.Assets.SingleOrDefault(x => x.Id == id);
             _context.Assets.Remove(asset);
-            _context.SaveChanges();
+           return  _context.SaveChanges()==0;
         }
 
         public Asset View(Guid id)

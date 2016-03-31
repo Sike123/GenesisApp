@@ -89,23 +89,38 @@ assetApp.service("assetService", ['$http', '$cookies', '$q', function ($http, $c
 };
 }]);
 
-assetApp.controller("assetController", ['$scope', '$routeParams', '$http', 'assetService', function ($scope,$routeParams, $http,assetService) {
+assetApp.controller("assetController", [
+    '$scope', '$routeParams', '$http', 'assetService', function($scope, $routeParams, $http, assetService) {
 
 
-  
+        $('deleteAssetLink').click(function(assetId) {
+            $scope.assetIdToDelete = assetId;
+        }
+
+    );
+        //as the modal is about to show 
+        $('#deleteModal').on('show.bs.modal', function (e) {
+            //need more reading on this 
+           // http://stackoverflow.com/questions/5309926/how-to-get-the-data-id-attribute
+            var assetToDelete = $(this).data("id");
+
     
+        
+          $scope.assetIdToDelete = $(e.relatedTarget).data(assetToDelete).id;
+           
+        });
 
-    $scope.deleteAsset = function (assetId) {
 
-        var promise = assetService.deleteAsset(assetId);
+        $scope.deleteAsset = function () {
+
+        var promise = assetService.deleteAsset($scope.assetIdToDelete);
 
         promise.then(function(response) {
-             alert("Product Deleted Successfully");
-                window.location.reload();
-            console.log(response);
+            //  alert("Product Deleted Successfully");
+        
+            window.location.reload();
         }).catch(function(error) {
             alert("Could not delete Product "+error);
-            console.log(error);
         });
 
     }
@@ -133,8 +148,7 @@ assetApp.controller("createAssetController", ['$scope', '$http', '$window', '$ro
             var assetDetails = assetService.getAssetDetails(assetId);
        
             assetDetails.then(function (response) {
-                    console.log("reponse for view Asset Details");
-                    console.log(response);
+                  
                     $scope.id = response.data.Id;
                     $scope.name = response.data.Name;
                     $scope.isbn = response.data.Isbn;
@@ -161,10 +175,10 @@ assetApp.controller("createAssetController", ['$scope', '$http', '$window', '$ro
 
         var promise = assetService.saveAssetDetails(book);
         promise.then(function (response) {
-
-            
+            console.log("log from product registration");
+            console.log(response);
            
-            alert("Product SuccessFully Added. " + response.data.Message);
+            alert("Product SuccessFully Added. " );
             $window.location.href = "/#/BooksList";
         }, function(error) {
             alert(error.data.Message);
