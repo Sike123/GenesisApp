@@ -1,35 +1,59 @@
 ﻿<!DOCTYPE html>
-<html ng-app="indexModule" ng-controller="indexController">
+<html ng-app="indexModule" ng-controller="indexController as ind">
 <head>
     <title>GenesisApp</title>
     <meta charset="utf-8" />
 </head>
 <body>
-<div class="container">
-    <div class="well well-sm" ng-show="hasLoggedIn">
+    <div class="container">
+        <div class="well well-sm" ng-show="hasLoggedIn">
 
 
-        <nav class="nav nav-pills">
-            <ul id="menu">
-                <li>
-                    <a  ng-model="hasLoggedIn" href="#/">Home </a>
-                </li>
-                <li class="pull-right">
-                    <a  ng-model="hasLoggedIn" ng-click="logOut()" href="" id="logOut">Logout</a>
-                </li>
-            </ul>
-        </nav>
+            <nav class="nav nav-pills">
+                <ul id="menu">
+                    <li>
+                        <a ng-model="hasLoggedIn" href="#/">Home </a>
+                    </li>
+                    <li class="pull-right">
+                        <a ng-model="hasLoggedIn" ng-click="logOut()" href="" id="logOut">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <h3 align="center" class="page-header">
+            <strong>Genesis Asset Management System </strong>
+        </h3>
+        <div ng-view onload="isUserAuthenticated()">
+        </div>
+        <div id="templateModal" name="templateModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!--modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title">{{messageHeader}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{messageBody}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">
+                            OK
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <h3 align="center" class="page-header"><strong>Genesis Asset Management System </strong>
-    </h3>
-    <div ng-view onload="isUserAuthenticated()">
-    </div>
-</div>
     <script src="/Scripts/angular.js"></script>
+    <script src="/Scripts/jquery-1.10.2.js"></script>
+    <script src="/Scripts/bootstrap.js"></script>
     <script src="/Scripts/angular-route.js"></script>
     <script src="/Scripts/angular-resource.js"></script>
     <script src="/Scripts/angular-cookies.js"></script>
+
     <script src="/Scripts/angular-ui/ui-bootstrap.js"></script>
     <script src="/Scripts/common/CurrentUser.js"></script>
     <script src="/Scripts/indexApp.js"></script>
