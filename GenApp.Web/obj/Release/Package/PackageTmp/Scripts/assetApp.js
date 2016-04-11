@@ -11,11 +11,11 @@ assetApp.service("assetService", ['$http', '$cookies', '$q', function ($http, $c
         var deferred = $q.defer();
         $http.get("/api/Asset/" + assetId, { headers: { 'Authorization': 'Bearer ' + $cookies.get('accessToken') } })
              .then(function (response) {
-
+                
                  deferred.resolve(response);
              }).catch(function (response) {
-
-                 alert("Oops something wrong: " + response.message);
+                console.log(response);
+                 alert("Oops something wrong: " + response.data);
                  deferred.reject(response);
              }).finally(function () {
 
@@ -24,16 +24,16 @@ assetApp.service("assetService", ['$http', '$cookies', '$q', function ($http, $c
     };
     var getAllAssets = function () {
         var deferred = $q.defer();
-        console.log("Access Token Form Cookies");
-        console.log($cookies.get("accessToken"));
+
         $http.get("/api/Asset/", {
             headers: { 'Authorization': 'Bearer ' + $cookies.get("accessToken"), 'Content-Type': 'application/json' }
         })
             .then(function (response) {
+                console.log(response);
                 deferred.resolve(response);
 
             }).catch(function (response) {
-                alert("Could not get asset details" + response.status + response.data);
+                alert("Could not get asset details" + response.status + " " + response.data);
             }).finally(function () {
 
             });
@@ -72,10 +72,10 @@ assetApp.service("assetService", ['$http', '$cookies', '$q', function ($http, $c
         var deferred = $q.defer();
         $http.delete("/api/Asset/" + assetId, { headers: { 'Authorization': 'Bearer ' + $cookies.get('accessToken') } })
             .then(function (response) {
-                deferred.resolve("asset successfully deleted " + response);
+                deferred.resolve(response);
             })
             .catch(function (response) {
-                deferred.reject("could not delete the asset" + response);
+                deferred.reject(response);
             });
         return deferred.promise;
     }
@@ -91,8 +91,8 @@ assetApp.service("assetService", ['$http', '$cookies', '$q', function ($http, $c
 }]);
 
 assetApp.controller("assetController", [
-    '$scope', '$routeParams', '$http', 'assetService', function ($scope, $routeParams, $http, assetService) {
-   
+    '$scope', '$routeParams', '$http', 'assetService', 'currentUser',function ($scope, $routeParams, $http, assetService,currentUser) {
+
         //as the modal is about to show 
         $('#deleteModal').on('show.bs.modal', function (e) {
             //need more reading on this 
@@ -101,16 +101,22 @@ assetApp.controller("assetController", [
             $scope.assetIdToDelete = $(e.relatedTarget).data(assetToDelete).id;
 
         });
+       
+        $('#templateModal').on('hidden.bs.modal', function () {
+            window.location.reload();
+        });
 
 
         $scope.deleteAsset = function () {
 
             var promise = assetService.deleteAsset($scope.assetIdToDelete);
-
+         
             promise.then(function (response) {
-                window.location.reload();
+                currentUser.setAndDisplayMessageModal("Asset Deleted", response.data);
+
             }).catch(function (error) {
-                alert("Could not delete Product " + error);
+                currentUser.setAndDisplayMessageModal("Error in Removing the Asset", error.data);
+               
             });
 
         }
@@ -118,7 +124,9 @@ assetApp.controller("assetController", [
         $scope.GetAllBooks = function () {
 
             var assets = assetService.getAllAssets();
+
             assets.then(function (response) {
+
                 $scope.books = response.data;
             });
         }
@@ -134,10 +142,10 @@ function ($scope, $http, $window, $routeParams, assetService, currentUser) {
     $scope.checkIfItsViewPage = function () {
         console.log("check is view page triggered");
         if (assetId) {
-            console.log('assetId from route param value' + assetId);
+          
             $scope.isViewPage = true;
             var assetDetails = assetService.getAssetDetails(assetId);
-
+           
             assetDetails.then(function (response) {
 
                 $scope.id = response.data.Id;
@@ -161,12 +169,12 @@ function ($scope, $http, $window, $routeParams, assetService, currentUser) {
         }
         var promise = assetService.saveAssetDetails(book);
         promise.then(function (response) {
-            console.log("log from product registration");
-            console.log(response);
-            currentUser.setAndDisplayMessageModal("Registration Successful", "Product has been Registered Successfully");
+      
+            currentUser.setAndDisplayMessageModal("Success", response.data);
             $window.location.href = "/#/BooksList";
         }, function (error) {
-            alert(error.data.Message);
+            currentUser.setAndDisplayConfirmationModal("Error", error.statusText + " " + error.data);
+            
         });
     }
 }]);
@@ -196,11 +204,12 @@ assetApp.controller("updateAssetController", ['$scope', '$http', '$window', '$ro
 
         var promise = assetService.updateAsset(book);
         promise.then(function (response) {
-            currentUser.setAndDisplayMessageModal("Update Successful", "Product has been updated Successfully");
+            currentUser.setAndDisplayMessageModal("Update Successful", response.data);
             $window.location.href = "/#/BookList";
         }).catch(function (error) {
             console.log(error);
-            alert("Error in Updating Product " + error.statusText);
+            //alert("Error in Updating Product " + error.statusText);
+            currentUser.setAndDisplayConfirmationModal("Update Could not Successful" + response.data);
         });
     }
 }]);

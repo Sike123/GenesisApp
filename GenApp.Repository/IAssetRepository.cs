@@ -9,10 +9,10 @@ namespace GenApp.Repository
 {
     public interface IAssetRepository
     {
-        IEnumerable<Asset> GetAll();
-        void Save(Asset asset);
-        bool Update(Asset asset);
-        bool Delete(Guid id);
-        Asset View(Guid assetId);
+        Task<IEnumerable<Asset>> GetAll();
+        Task<bool> Save(Asset asset);
+        Task<bool> Update(Asset asset);
+        Task<bool> Delete(Guid id);
+        Task<Asset> View(Guid assetId);
     }
 }

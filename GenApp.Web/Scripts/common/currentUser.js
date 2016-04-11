@@ -59,6 +59,7 @@
                 var modal = $(this);
                 modal.find('.modal-body').text(messageBody);
                 modal.find('.modal-header').text(messageHeader);
+              
             });
 
             $('#templateModal').modal('show');
@@ -71,10 +72,6 @@
                 modal.find('.modal-body').text(messageBody);
                 modal.find('.modal-header').text(messageHeader);
                 modal.find('#confirmationButton').text(commandText);
-
-            
-
-
             });
 
             $('#confirmationModal').modal('show');

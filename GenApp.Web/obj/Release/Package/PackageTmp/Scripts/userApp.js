@@ -133,7 +133,8 @@ userModule.controller("userController", ['$scope', '$http', '$window', '$routePa
                 }
 
             }).catch(function (response) {
-                $scope.errorMessage = response.data.statusText;
+                console.log(response);
+                $scope.errorMessage = response.data.error_description;
             });
 
 
