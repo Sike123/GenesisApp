@@ -8,48 +8,49 @@
         <form name="registerForm" ng-submit="register()">
             <div ng-if="errorMessage" class="alert alert-danger">
                 <span class="glyphicon glyphicon-exclamation-sign"></span>
-                <!-- <a class="close" data-dismiss="alert" href="#">×</a> -->
                 {{errorMessage}}
             </div>
-        
+
             <fieldset class="form-group">
                 <label for="emailTextBox">Email Address</label>
                 <input type="email"
                        class="form-control"
                        ng-model="email"
-                       id="emailTextBox" autofocus required/>
+                       id="emailTextBox" autofocus required />
                 <span ng-show="email.$touched && email.$invalid">Email Is Required</span>
             </fieldset>
             <fieldset class="form-group">
                 <label for="passwordTextBox">PassWord</label>
                 <input type="password"
                        ng-model="password"
-                       class="form-control" 
-                       id="passwordTextBox" required/>
+                       class="form-control"
+                       id="passwordTextBox" required />
             </fieldset>
             <fieldset class="form-group">
                 <label for="confirmPassWordTextBox">Confirm PassWord</label>
                 <input type="password" class="form-control"
-                       ng-model="confirmPassword" 
-                       id="confirmPassWordTextBox"  required/>
+                       ng-model="confirmPassword"
+                       id="confirmPassWordTextBox" required />
             </fieldset>
-            <button type="submit" class="btn btn-success">
-            <span class="glyphicon glyphicon-pencil"> </span> Register
+            <button class="btn btn-success"
+                    id="buttonId">
+                  <span class="glyphicon glyphicon-pencil"> </span> 
+                Register
+             <i id="registerUserSpinner" class=""></i> 
+             
             </button>
 
             <a href="/#/Login.html" class="btn btn-warning">
                 <span class="glyphicon glyphicon-home"></span>
-                 Back
+                Back
             </a>
-          
+
         </form>
-        <ul>
-            
-        </ul>
+        <ul></ul>
     </div>
 
     <div class="panel-footer">
         GenApp
     </div>
 </div>
-   
+
