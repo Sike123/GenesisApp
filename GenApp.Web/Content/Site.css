@@ -50,3 +50,9 @@ ul#menu li{
     color: white;
 }
 
+
+.disableDiv {
+    pointer-events: none;
+    opacity: 0.4;
+  
+}

@@ -171,6 +171,7 @@ function ($scope, $http, $window, $routeParams, assetService, currentUser) {
         promise.then(function (response) {
       
             currentUser.setAndDisplayMessageModal("Success", response.data);
+           // alert(response.data);
             $window.location.href = "/#/BooksList";
         }, function (error) {
             currentUser.setAndDisplayConfirmationModal("Error", error.statusText + " " + error.data);

@@ -76,10 +76,6 @@
     <Compile Include="Migrations\201512251114438_Added Few More columns for Book.Designer.cs">
       <DependentUpon>201512251114438_Added Few More columns for Book.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512251639451_Added Few more Rows for Seed Data.cs" />
-    <Compile Include="Migrations\201512251639451_Added Few more Rows for Seed Data.Designer.cs">
-      <DependentUpon>201512251639451_Added Few more Rows for Seed Data.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201602281554590_ReinitialiseTheDatabaseAfterUsingIdentityDefaultBuiltInDatabase.cs" />
     <Compile Include="Migrations\201602281554590_ReinitialiseTheDatabaseAfterUsingIdentityDefaultBuiltInDatabase.Designer.cs">
       <DependentUpon>201602281554590_ReinitialiseTheDatabaseAfterUsingIdentityDefaultBuiltInDatabase.cs</DependentUpon>
@@ -100,9 +96,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512251114438_Added Few More columns for Book.resx">
       <DependentUpon>201512251114438_Added Few More columns for Book.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512251639451_Added Few more Rows for Seed Data.resx">
-      <DependentUpon>201512251639451_Added Few more Rows for Seed Data.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602281554590_ReinitialiseTheDatabaseAfterUsingIdentityDefaultBuiltInDatabase.resx">
       <DependentUpon>201602281554590_ReinitialiseTheDatabaseAfterUsingIdentityDefaultBuiltInDatabase.cs</DependentUpon>

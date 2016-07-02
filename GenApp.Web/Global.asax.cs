@@ -16,6 +16,8 @@ using AutoMapper.Configuration;
 using GenApp.Repository;
 using GenApp.Web.Controllers;
 using GenApp.Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GenApp.Web
 {
@@ -60,8 +62,11 @@ namespace GenApp.Web
             var builder = new ContainerBuilder();
             var config = GlobalConfiguration.Configuration;
 
+          
             // You can register controllers all at once using assembly scanning...
             //builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+
+            
 
             // ...or you can register individual controlllers manually.
             builder.RegisterType<AssetController>().InstancePerRequest();

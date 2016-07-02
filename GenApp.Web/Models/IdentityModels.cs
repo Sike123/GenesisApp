@@ -1,13 +1,13 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
 
 namespace GenApp.Web.Models
 {
 
-   
+
     public class ApplicationUserLogin : IdentityUserLogin<string> { }
     public class ApplicationUserClaim : IdentityUserClaim<string> { }
 
@@ -25,6 +25,21 @@ namespace GenApp.Web.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        //extended properties region 
+        #region
+        
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int? Level { get; set; }
+        public DateTime?  JoinDate
+        {
+            get;
+            set;
+        } 
+        #endregion
+
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -33,7 +48,7 @@ namespace GenApp.Web.Models
             : base("GenAppContext", throwIfV1Schema: false)
         {
         }
-        
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

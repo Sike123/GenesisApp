@@ -11,13 +11,14 @@ namespace GenApp.Repository
     {
         protected override void Seed(GenAppContext context)
         {
-            
-           //  This code doesnt work so its done in configuration.cs
+
+            //  This code doesnt work so its done in configuration.cs
+            /*
             var books = new List<Book>
             {
-                new Book() {Id = Guid.NewGuid(), Isbn = "TestIsbn", Name = "Dan Brown"},
-                new Book() {Id = Guid.NewGuid(), Isbn = "TestIsbn", Name = "Lord of the Rings"},
-                new Book() {Id = Guid.NewGuid(), Isbn = "TestIsbn", Name = "Harry Potter"},
+                new Book() {Id = Guid.NewGuid(), Isbn = "TestIsbn1", Name = "Dan Brown",Publisher = "Pawan Publishing",Edition = "1st Edition"},
+                new Book() {Id = Guid.NewGuid(), Isbn = "TestIsbn2", Name = "Lord of the Rings",Publisher = "Soni Publishing",Edition = "2nd Edition"},
+                new Book() {Id = Guid.NewGuid(), Isbn = "TestIsbn3", Name = "Harry Potter",Publisher = "Gurung Publishing",Edition = "3rd Edition"},
             };
             books.ForEach(x => context.Books.Add(x));
             context.SaveChanges();
@@ -31,7 +32,7 @@ namespace GenApp.Repository
             };
             users.ForEach(x=>context.Users.Add(x));
             context.SaveChanges();
-            
+            */
         }
 
 

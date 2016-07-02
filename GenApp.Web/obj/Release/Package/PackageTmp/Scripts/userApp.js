@@ -101,11 +101,11 @@ userModule.controller("userController", ['$scope', '$http', '$window', '$routePa
             result.then(function (response) {
                 console.log(response);
                 messageHeader = "User Registration Successful";
-                messageBody = "Hello " + response.UserName + " your details have been successfully registered. Now you will be <br/> " +
+                messageBody = "Hello " + response.UserName + " your details have been successfully registered. Now you will be " +
                     "redirected to the login page.";
                 document.getElementById('registerUserSpinner').className = '';
 
-                $('#templateModal').modal('show');
+              $('#templateModal').modal('show');
 
            
              
@@ -135,6 +135,7 @@ userModule.controller("userController", ['$scope', '$http', '$window', '$routePa
 
         $scope.login = function () {
             document.getElementById('loginButtonSpinner').className = 'fa fa-spinner fa-spin';
+            
             var result = userService.login(this.model.user.username,this.model.user.password);
             result.then(function (response) {
                 if (response.access_token) {
@@ -148,17 +149,30 @@ userModule.controller("userController", ['$scope', '$http', '$window', '$routePa
                 }
 
             }).catch(function (response) {
+                
                 document.getElementById('loginButtonSpinner').className = '';
+             
                 console.log(response);
                 $scope.errorMessage = response.data.error_description;
             });
 
+            $('#loginModal').on('show.bs.modal', function(e) {
+
+                var modal = $(this);
+                modal.find('.modal-body').text(messageHeader);
+                modal.find('.modal-header').text(messageHeader);
+
+
+            });
 
             $('#templateModal').on('show.bs.modal', function (e) {
-                document.getElementById('loginButtonSpinner').className = '';
-                var modal = $(this);
-                modal.find('.modal-body').text(messageBody);
-                modal.find('.modal-header').text(messageHeader);
+                var loginButtonSpinner = document.getElementById('loginButtonSpinner');
+                if (loginButtonSpinner) {
+                    document.getElementById('loginButtonSpinner').className = '';
+                    var modal = $(this);
+                    modal.find('.modal-body').text(messageBody);
+                    modal.find('.modal-header').text(messageHeader);
+                }
             });
 
             //take the user to the booklist when the modal has finished disrendering

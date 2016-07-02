@@ -66,7 +66,7 @@ namespace GenApp.Web.Controllers
             };
         }
 
-      
+
 
         // POST api/Account/Logout
         [System.Web.Http.Route("Logout")]
@@ -127,7 +127,7 @@ namespace GenApp.Web.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -260,9 +260,9 @@ namespace GenApp.Web.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -332,9 +332,16 @@ namespace GenApp.Web.Controllers
                 {
                     return BadRequest(ModelState);
                 }
-                var user = new ApplicationUser() {UserName = model.Email, Email = model.Email};
+                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-                return !result.Succeeded ? GetErrorResult(result) : Created(Request.RequestUri + user.Id, user);
+                if (result.Succeeded)
+                {
+                    
+                    return Created(Request.RequestUri + user.Id, user);
+                }
+
+                return GetErrorResult(result);
+
             }
             catch (Exception ex)
             {
@@ -342,7 +349,7 @@ namespace GenApp.Web.Controllers
             }
         }
 
-   
+
 
         // POST api/Account/RegisterExternal
         [System.Web.Http.OverrideAuthentication]
@@ -372,7 +379,7 @@ namespace GenApp.Web.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }
