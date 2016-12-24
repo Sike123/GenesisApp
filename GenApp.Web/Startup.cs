@@ -14,5 +14,7 @@ namespace GenApp.Web
         {
             ConfigureAuth(app);
         }
+
+
     }
 }

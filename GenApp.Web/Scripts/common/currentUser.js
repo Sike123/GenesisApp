@@ -1,24 +1,25 @@
 ﻿(function () {
     "use strict";
 
-    angular.module("common.services",['ngCookies'])
+    angular.module("common.services", ['ngCookies'])
      .constant("appSettings",
          {
              serverPath: "http://localhost:51227/"
+             // serverPath: "http://genesisapp.azurewebsites.net/#/"
          }
      )
-    .service("currentUser",['$cookies',currentUser]);
+    .service("currentUser", ['$cookies', currentUser]);
 
     function currentUser($cookies) {
         var profile = {
             isLoggedIn: false,
             username: "",
-            password:"",
+            password: "",
             token: "",
-            role:""
+            role: ""
         }
 
-        var setProfile = function (username, token,userRole) {
+        var setProfile = function (username, token, userRole) {
             profile.userName = username;
             $cookies.put('userName', username);
             profile.token = token;
@@ -39,35 +40,35 @@
             $cookies.put('accessToken', null);
             profile.isLoggedIn = false;
             $cookies.put('isLoggedIn', false);
-            
+
         }
 
 
 
         var getProfile = function () {
-          
+
             profile.userName = $cookies.get('userName');
             profile.token = $cookies.get('accessToken');
             profile.isLoggedIn = $cookies.get('isLoggedIn');
 
             return profile;
         }
-        
-        var setAndDisplayMessageModal = function (messageHeader,messageBody) {
- 
+
+        var setAndDisplayMessageModal = function (messageHeader, messageBody) {
+
             $('#templateModal').on('show.bs.modal', function () {
                 var modal = $(this);
                 modal.find('.modal-body').text(messageBody);
                 modal.find('.modal-header').text(messageHeader);
-              
+
             });
 
             $('#templateModal').modal('show');
         }
 
-        var setAndDisplayConfirmationModal=function(messageHeader, messageBody,commandText) {
+        var setAndDisplayConfirmationModal = function (messageHeader, messageBody, commandText) {
 
-            $('#confirmationModal').on('show.bs.modal', function() {
+            $('#confirmationModal').on('show.bs.modal', function () {
                 var modal = $(this);
                 modal.find('.modal-body').text(messageBody);
                 modal.find('.modal-header').text(messageHeader);
@@ -84,10 +85,10 @@
             getProfile: getProfile,
             removeProfile: removeProfile,
             setAndDisplayMessageModal: setAndDisplayMessageModal,
-            setAndDisplayConfirmationModal:setAndDisplayConfirmationModal
+            setAndDisplayConfirmationModal: setAndDisplayConfirmationModal
         }
     }
 
-    
+
 
 })();

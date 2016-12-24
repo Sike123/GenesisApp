@@ -24,7 +24,7 @@ userModule.service("userService", [
             var deferred = $q.defer();
 
             var result = $http({
-                method: 'Post',
+                method: "Post",
                 url: '/api/Account/Register',
                 data: obj,
                 headers: {
@@ -96,7 +96,7 @@ userModule.controller("userController", ['$scope', '$http', '$window', '$routePa
             };
 
             document.getElementById('registerUserSpinner').className = 'fa fa-spinner fa-spin';
-            
+                
             var result = userService.registerUser(routeUrl, user);
             result.then(function (response) {
                 console.log(response);

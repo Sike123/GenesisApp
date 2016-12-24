@@ -15,7 +15,16 @@
                         <a ng-model="hasLoggedIn" href="#/">Home </a>
                     </li>
                     <li>
-                        <a ng-model="hasLoggedIn">Admin</a>
+                        <a ng-model="hasLoggedIn" href="#/Create">Create</a>
+                    </li>
+                    <li>
+                        <a ng-model="hasLoggedIn" href="#/RegisterUser">RegisterUser</a>
+                    </li>
+                    <li>
+                        <a ng-model="hasLoggedIn" href="#/Admin">Admin</a>
+                    </li>
+                    <li>
+                        <a ng-model="hasLoggedIn" href="#/AssignRolesToUser">AssignRolesToUser</a>
                     </li>
 
                     <li class="pull-right">
@@ -29,6 +38,7 @@
             <strong>Genesis Asset Management System </strong>
         </h3>
         <div ng-view onload="isUserAuthenticated()">
+            hello
         </div>
         <div id="loadingModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -100,6 +110,8 @@
     <script src="/Scripts/indexApp.js"></script>
     <script src="/Scripts/assetApp.js"></script>
     <script src="/Scripts/userApp.js"></script>
+    <script src="/Scripts/adminApp.js"></script>
+
     <link href="/css/font-awesome.css" rel="stylesheet" type="text/css" />
     <link href="/Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="/Content/ui-bootstrap-csp.css" rel="stylesheet" type="text/css">

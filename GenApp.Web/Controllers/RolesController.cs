@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GenApp.Web.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     [RoutePrefix("api/roles")]
     public class RolesController : BaseApiController
     {
@@ -20,18 +20,19 @@ namespace GenApp.Web.Controllers
                 return Ok(ModelFactory.Create(role));
             }
             return NotFound();
-
         }
 
         [Route("", Name = "GetAllRoles")]
+        [HttpGet]
         public IHttpActionResult GetAllRoles()
         {
             var roles = AppRoleManager.Roles;
             return Ok(roles);
         }
 
-        [Route("Create")]
-        public async Task<IHttpActionResult> Create(RoleBindingModel.CreateRoleBindingModel model)
+        [System.Web.Http.Route("Create")]
+        [System.Web.Http.HttpPost]
+        public async Task<IHttpActionResult> Create( RoleBindingModel.CreateRoleBindingModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -39,13 +40,13 @@ namespace GenApp.Web.Controllers
             }
 
             var role = new IdentityRole { Name = model.Name };
-
-            var result = await AppRoleManager.CreateAsync(role);
+            
+            var result =  await AppRoleManager.CreateAsync(role);
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
             }
-
+           
             var locationHeader = new Uri(Url.Link("GetRoleById", new { id = role.Id }));
             return Created(locationHeader, ModelFactory.Create(role));
 
@@ -85,6 +86,7 @@ namespace GenApp.Web.Controllers
                     ModelState.AddModelError("", @"User {user} does not exist");
                     continue;
                 }
+
                 if (!AppUserManager.IsInRole(enRolledUser, role.Name))
                 {
                     IdentityResult result = await this.AppUserManager.AddToRoleAsync(enRolledUser, role.Name);

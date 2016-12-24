@@ -349,7 +349,39 @@ namespace GenApp.Web.Controllers
             }
         }
 
+        /// <summary>
+        /// Added By Pawan 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="rolesToAssign"></param>
+        /// <returns></returns>
+        public async Task<IHttpActionResult> AssignRolesToUser([FromUri] string id, [FromBody] string[] rolesToAssign)
+        {
+            var appUser = await UserManager.FindByIdAsync(id);
+            if (appUser == null)
+            {
+                return NotFound();
+            }
+            
+            var currentRoles = await UserManager.GetRolesAsync(appUser.Id);
 
+            var removeResult = await UserManager.RemoveFromRolesAsync(appUser.Id, currentRoles.ToArray());
+            if (!removeResult.Succeeded)
+            {
+                ModelState.AddModelError("","Failed to remove user roles");
+                return BadRequest(ModelState);
+            }
+
+            IdentityResult addResult = await UserManager.AddToRolesAsync(appUser.Id,rolesToAssign);
+            if (!addResult.Succeeded)
+            {
+                ModelState.AddModelError("","Failed to Add user Roles");
+                return BadRequest(ModelState);
+            }
+
+            return Ok();
+
+        }
 
         // POST api/Account/RegisterExternal
         [System.Web.Http.OverrideAuthentication]

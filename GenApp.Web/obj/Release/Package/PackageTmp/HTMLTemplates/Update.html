@@ -1,52 +1,27 @@
 ﻿
-
-
     <div ng-app="assetModule" class="panel panel-primary">
         <div class="panel-heading">
-
             <label>Please Make The Necessary Changes Here </label>
-
         </div>
 
         <div class="panel-body">
-            <form ng-submit="submit()">
+            <form ng-submit="submit()" ng-if="!authenticated">
                 <div class="form-group">
                     <label for="name"><strong>Name </strong></label>
                     <input type="hidden" class="form-control" id="id" ng-model="id"/>
-
-
-                    <input type="text" class="form-control" id="name" ng-model="name" required/>
-
-
-
-
+                    <input type="text" class="form-control" id="name" ng-model="$parent.name" required/>
                 </div>
                 <div class="form-group">
                     <label for="isbn"><strong>Isbn</strong></label>
-
-
-
-                    <input type="text" class="form-control" id="isbn" ng-model="isbn" placeholder="Isbn" required/>
-
-
-
-
+                    <input type="text" class="form-control" id="isbn" ng-model="$parent.isbn" placeholder="Isbn" required/>
                 </div>
                 <div class="form-group">
                     <label for="publisher"><strong>Publisher</strong></label>
-
-
-
-                    <input type="text" class="form-control" id="publisher" ng-model="publisher" placeholder="Publisher" required/>
-
-
+                    <input type="text" class="form-control" id="publisher" ng-model="$parent.publisher" placeholder="Publisher" required/>
                 </div>
                 <div class="form-group">
                     <label for="edition">Edition</label>
-
-                    <input type="text" class="form-control" id="edition" ng-model="edition" required/>
-
-
+                    <input type="text" class="form-control" id="edition" ng-model="$parent.edition" required/>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary" id="enterButton" ng-model="enter" placeholder="Enter">
@@ -58,12 +33,10 @@
                         Back
                     </a>
                 </div>
-
             </form>
         </div>
         <div class="panel-footer">
             GenApp
         </div>
-
     </div>
 

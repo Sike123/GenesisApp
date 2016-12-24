@@ -9,15 +9,18 @@ namespace GenApp.Web.Controllers
     //added by pawan
     public class BaseApiController : ApiController
     {
+
         private readonly ApplicationRoleManager _applicationRoleManager=null;
         private readonly ApplicationUserManager _applicationUserManager = null;
         private readonly ModelFactory _modelFactory = null;
 
         protected ModelFactory ModelFactory =>
-            _modelFactory ?? new ModelFactory(this.Request, this.AppUserManager);
+            _modelFactory ?? new ModelFactory(Request, AppUserManager);
 
         protected ApplicationRoleManager AppRoleManager => 
             _applicationRoleManager ?? Request.GetOwinContext().GetUserManager<ApplicationRoleManager>();
+
+        
 
         protected ApplicationUserManager AppUserManager =>
             _applicationUserManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();

@@ -1,0 +1,29 @@
+﻿
+<div class="panel panel-primary">
+    <div class="panel page-header">
+        Admin 
+    </div>
+    <div class="panel-body" ng-app="adminModule">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <label ng-if="isViewPage"> Details </label>
+                <label ng-if="!isViewPage">Please Register</label>
+            </div>
+
+            <div class="panel-body">
+                <form ng-submit="submit()">
+                    <div class="form-group">
+                        <label><strong>Role Name</strong></label>
+                        <input ng-model="roleName" type="text" class="form-control" id="roleName" placeholder="name"/>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                        Register
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Web.Http;
-using System.Web.Http.Results;
-using System.Web.Mvc;
+
 using AutoMapper;
 using GenApp.Repository;
 using GenApp.Web.Models;
-using Microsoft.AspNet.Identity;
 
 /*
     Use of Content
@@ -28,19 +26,20 @@ namespace GenApp.Web.Controllers
 
 
         // GET: api/Asset
-        [System.Web.Http.Authorize]
+
+      //  [Authorize(Roles = "Admin")]
         public async Task<IHttpActionResult> Get()
         {
             try
             {
                 var assetList = await _assetAssetRepository.GetAll();
                 var assetListViewModel = assetList.Select(Mapper.Map<BookViewModel>).ToList();
-              //  return Ok(assetListViewModel);
-                return Content(HttpStatusCode.OK,assetListViewModel);
+                //  return Ok(assetListViewModel);
+                return Content(HttpStatusCode.OK, assetListViewModel);
             }
             catch (Exception ex)
             {
-                return Content(HttpStatusCode.InternalServerError,"Exception Message"+ ex.Message+" "+ex.StackTrace);
+                return Content(HttpStatusCode.InternalServerError, "Exception Message" + ex.Message + " " + ex.StackTrace);
             }
 
         }
@@ -57,7 +56,7 @@ namespace GenApp.Web.Controllers
                     return NotFound();
                 }
                 return Ok(result);
-               //  return Content(HttpStatusCode.Found, result);
+                //  return Content(HttpStatusCode.Found, result);
             }
             catch (Exception ex)
             {
@@ -85,6 +84,7 @@ namespace GenApp.Web.Controllers
             }
         }
 
+
         // PUT: api/Asset/5
         [System.Web.Http.Authorize]
         public async Task<IHttpActionResult> Put([FromBody] BookViewModel model)
@@ -104,6 +104,29 @@ namespace GenApp.Web.Controllers
                 return Content(HttpStatusCode.InternalServerError, ex.Message + " " + ex.StackTrace);
             }
         }
+
+        // PUT: api/Asset/5
+        /*
+        [System.Web.Http.Authorize]
+        public async Task<IHttpActionResult> Put([FromBody] BookViewModel model)
+        {
+            string result = null;
+            try
+            {
+                if (model.IsEmpty) return BadRequest(ModelState);
+                result = _assetAssetRepository.Update(Mapper.Map<Book>(model));
+                return Content(HttpStatusCode.Created, result);
+                //  ? Content(HttpStatusCode.Created, "Asset has been Updated Successfully")
+                //  : Content(HttpStatusCode.InternalServerError, "Asset could not be updated. ");
+            }
+            catch (Exception ex)
+            {
+            //    return Content(HttpStatusCode.InternalServerError, ex.Message + " " + ex.StackTrace);
+                return Content(HttpStatusCode.InternalServerError, result);
+            }
+           
+        }
+        */
 
         // DELETE: api/Asset/5
         [System.Web.Http.Authorize]
