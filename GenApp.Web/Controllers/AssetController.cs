@@ -8,6 +8,7 @@ using System.Web.Http;
 using AutoMapper;
 using GenApp.Repository;
 using GenApp.Web.Models;
+using log4net;
 
 /*
     Use of Content
@@ -18,27 +19,31 @@ namespace GenApp.Web.Controllers
     public class AssetController : ApiController
     {
         private readonly IAssetRepository _assetAssetRepository;
-
-        public AssetController(IAssetRepository assetRepository)
+        private readonly ILog _logger;
+        public AssetController(IAssetRepository assetRepository, ILog logger)
         {
             _assetAssetRepository = assetRepository;
+            _logger = logger;
         }
 
 
         // GET: api/Asset
-
-      //  [Authorize(Roles = "Admin")]
+        //  [Authorize(Roles = "Admin")]
         public async Task<IHttpActionResult> Get()
         {
             try
             {
+                _logger.Info("Enterning Get()");
                 var assetList = await _assetAssetRepository.GetAll();
                 var assetListViewModel = assetList.Select(Mapper.Map<BookViewModel>).ToList();
+                _logger.Info("No Of AssetList Retrieved " + assetListViewModel.Count());
                 //  return Ok(assetListViewModel);
                 return Content(HttpStatusCode.OK, assetListViewModel);
+
             }
             catch (Exception ex)
             {
+                _logger.Error("Exception From Get() " + ex);
                 return Content(HttpStatusCode.InternalServerError, "Exception Message" + ex.Message + " " + ex.StackTrace);
             }
 
@@ -75,7 +80,6 @@ namespace GenApp.Web.Controllers
                 if (model.IsEmpty) return BadRequest(ModelState);
                 bool result = await _assetAssetRepository.Save(Mapper.Map<Book>(model));
                 return !result ? Content(HttpStatusCode.InternalServerError, "Registration could not be completed") :
-
                     Content(HttpStatusCode.Created, "Asset Has Been Registered Successfully.");
             }
             catch (Exception ex)
@@ -83,7 +87,6 @@ namespace GenApp.Web.Controllers
                 return Content(HttpStatusCode.InternalServerError, ex.Message + "," + ex.StackTrace);
             }
         }
-
 
         // PUT: api/Asset/5
         [System.Web.Http.Authorize]
@@ -143,7 +146,6 @@ namespace GenApp.Web.Controllers
             {
                 return Content(HttpStatusCode.InternalServerError,
                     "Exception occurred. " + ex.Message + " " + ex.StackTrace);
-
             }
         }
     }

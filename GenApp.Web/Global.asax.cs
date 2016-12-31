@@ -1,23 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Reflection;
-using System.Web;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
-using Autofac.Core;
 using Autofac.Integration.WebApi;
 using AutoMapper;
-using AutoMapper.Configuration;
 using GenApp.Repository;
 using GenApp.Web.Controllers;
 using GenApp.Web.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GenApp.Web
 {
@@ -38,40 +28,29 @@ namespace GenApp.Web
             //custom addition for json 
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
-
-
-
             CreateMappings();
-
             SetAutofacContainer();
-
-
-
-
-
-
-
-
         }
 
         // http://docs.autofac.org/en/stable/integration/webapi.html#register-controllers
         //WebApi 2 verson of Autofac.WebApi Integration has been used surprisingly. The WebApi 1 version didnt work for some reason 
         protected void SetAutofacContainer()
         {
-
             var builder = new ContainerBuilder();
             var config = GlobalConfiguration.Configuration;
-
           
             // You can register controllers all at once using assembly scanning...
-            //builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-
-            
+            // builder.RegisterApiControllers(Assembly.GetExecutingAssembly()); 
 
             // ...or you can register individual controlllers manually.
             builder.RegisterType<AssetController>().InstancePerRequest();
 
+            //Register your logging module that came from autofaq
+            log4net.Config.XmlConfigurator.Configure();
 
+            builder.RegisterModule<LoggingModule>();
+
+          
             // OPTIONAL: Register the Autofac filter provider.
             builder.RegisterWebApiFilterProvider(config);
 
@@ -81,8 +60,6 @@ namespace GenApp.Web
             Container = builder.Build();
 
             config.DependencyResolver = new AutofacWebApiDependencyResolver(Container);
-
-
         }
 
         protected void CreateMappings()

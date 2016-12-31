@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,14 +8,18 @@ namespace GenApp.Repository
 {
     public class AssetRepository : IAssetRepository
     {
-
+        
         private readonly GenAppContext _context = new GenAppContext();
 
         public async Task<IEnumerable<Asset>> GetAll()
         {
             //can use the commented code as well 
             //  var assets = Task.Factory.StartNew(() =>(IEnumerable<Asset>) _context.Books);
-            return await _context.Books.ToListAsync();
+            var assets = _context.Books.ToListAsync();
+
+            
+
+            return await assets;
 
         }
 
