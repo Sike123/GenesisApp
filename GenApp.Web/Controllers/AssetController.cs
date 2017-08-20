@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Web.Configuration;
 using System.Web.Http;
@@ -37,7 +38,6 @@ namespace GenApp.Web.Controllers
                 var assetList = await _assetAssetRepository.GetAll();
                 var assetListViewModel = assetList.Select(Mapper.Map<BookViewModel>).ToList();
                 _logger.Info("No Of AssetList Retrieved " + assetListViewModel.Count());
-                //  return Ok(assetListViewModel);
                 return Content(HttpStatusCode.OK, assetListViewModel);
 
             }
@@ -55,16 +55,27 @@ namespace GenApp.Web.Controllers
         {
             try
             {
+                _logger.Info("Method: Get(Guid id)");
                 var result = await _assetAssetRepository.View(id);
+
                 if (result == null)
                 {
                     return NotFound();
                 }
+
+                var properties = typeof(Book).GetProperties();
+
+                foreach (var property in properties)
+                {
+                    _logger.Info("Property Name : " + property.Name +
+                                 "Property Value: " + property.GetValue(result, null));
+                }
+
                 return Ok(result);
-                //  return Content(HttpStatusCode.Found, result);
             }
             catch (Exception ex)
             {
+                _logger.Error("Exception from Get(GuidId) Method " + ex.Message + " " + ex.StackTrace);
                 return Content(HttpStatusCode.InternalServerError,
                     "Exception Occurred" + ex.Message + " " + ex.StackTrace);
             }
