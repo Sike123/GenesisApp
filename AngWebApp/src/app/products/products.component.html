@@ -1,0 +1,13 @@
+<p>
+  Product List 
+</p>
+<ul>
+  <li *ngFor="let product of products" (click)="onSelect(product)">
+     {{product.id}} : {{product.name}}
+    
+     <br/>
+  </li>
+</ul>
+<p>
+  <app-product-detail [product]="selectedProduct"></app-product-detail>
+</p>
