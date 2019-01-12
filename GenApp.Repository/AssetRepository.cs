@@ -11,6 +11,7 @@ namespace GenApp.Repository
         
         private readonly GenAppContext _context = new GenAppContext();
         
+        
         public async Task<IEnumerable<Asset>> GetAll()
         {  
             var assets = _context.Books.ToListAsync();
