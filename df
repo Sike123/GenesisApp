@@ -1,0 +1,35 @@
+[33mcommit fb39b583c45ddfd79416582a497edecbbac97c8a[m
+Author: Sike123 <pawangrg54@hotmail.com>
+Date:   Sat Apr 16 19:16:05 2016 +0100
+
+    Added Spinner icon, introduced Font Awesome and made few UI Updates
+
+[33mcommit be9a6fae7d859292cb8f500174fffb7794ba97d7[m
+Author: Sike123 <pawangrg54@hotmail.com>
+Date:   Mon Apr 11 19:52:27 2016 +0100
+
+    Updates to the UI
+
+[33mcommit 8926892eacfbbdea40c7b455fa4d44a974888e81[m
+Author: Sike123 <pawangrg54@hotmail.com>
+Date:   Thu Mar 31 19:01:40 2016 +0100
+
+    Added some implementation such that use should get modal pop when pressing logout button. not working as expected. corrected asset registration window
+
+[33mcommit 4300c5b0b6852e78796d884a57d920ad57e70454[m
+Author: Sike123 <pawangrg54@hotmail.com>
+Date:   Thu Mar 31 17:14:27 2016 +0100
+
+    Updated app to include modal wherever possible instead of alerts
+
+[33mcommit 7f99b6a282e22308ec815cc7c1b6be050a5e12bf[m
+Author: Sike123 <pawangrg54@hotmail.com>
+Date:   Thu Mar 31 16:16:42 2016 +0100
+
+    Modified html and cshtml files for modal
+
+[33mcommit b1af75a804870ad9370e35e9993ca894d00b13b1[m
+Author: Sike123 <pawangrg54@hotmail.com>
+Date:   Thu Mar 31 16:13:54 2016 +0100
+
+    Added Modal and updated repsective js files for its implementation enhancing pop ups and alert boxes

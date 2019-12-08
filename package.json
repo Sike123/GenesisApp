@@ -1,0 +1,26 @@
+{
+  "name": "genesisapp",
+  "version": "1.0.0",
+  "description": "Genesis Angular App",
+  "main": "index.js",
+  "dependencies": {
+    "npm": "^6.6.0-next.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm help json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sike123/GenesisApp.git"
+  },
+  "keywords": [
+    "Test"
+  ],
+  "author": "Pawan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sike123/GenesisApp/issues"
+  },
+  "homepage": "https://github.com/Sike123/GenesisApp#readme"
+}
