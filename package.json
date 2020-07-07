@@ -4,7 +4,7 @@
   "description": "Genesis Angular App",
   "main": "index.js",
   "dependencies": {
-    "npm": "^6.6.0-next.1"
+    "npm": "^6.14.6"
   },
   "devDependencies": {},
   "scripts": {
